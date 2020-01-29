@@ -1,27 +1,37 @@
 import { Component } from '@angular/core';
-import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Plugins, CameraResultType, Capacitor, FilesystemDirectory,
+  CameraPhoto, CameraSource } from '@capacitor/core';
+
+const { Camera, Filesystem, Storage } = Plugins;
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
+
 export class Tab1Page {
-  photo: SafeResourceUrl;
+  public photos: Photo[] = [];
 
-  constructor(private sanitizer: DomSanitizer) {  }
+  constructor(){  }
 
-  async takePicture() {
-    const image = await Plugins.Camera.getPhoto({
-      quality: 100,
-      allowEditing: false,
-      resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera
+  public async addNewToGallery() {
+    const capturedPhoto = await Camera.getPhoto({
+      resultType: CameraResultType.Uri, 
+      source: CameraSource.Camera, 
+      quality: 100 
     });
-
-    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+  
+    this.photos.unshift({
+      filepath: "soon...",
+      webviewPath: capturedPhoto.webPath
+    });
   }
+  
+}
 
-
+interface Photo {
+  filepath: string;
+  webviewPath: string;
+  base64?: string;
 }
