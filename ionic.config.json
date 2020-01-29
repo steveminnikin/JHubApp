@@ -1,0 +1,7 @@
+{
+  "name": "jhubApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
