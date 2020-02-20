@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { Plugins, CameraResultType, Capacitor, FilesystemDirectory,
-  CameraPhoto, CameraSource } from '@capacitor/core';
-
-const { Camera, Filesystem, Storage } = Plugins;
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-tab1',
@@ -11,27 +9,8 @@ const { Camera, Filesystem, Storage } = Plugins;
 })
 
 export class Tab1Page {
-  public photos: Photo[] = [];
 
-  constructor(){  }
-
-  public async addNewToGallery() {
-    const capturedPhoto = await Camera.getPhoto({
-      resultType: CameraResultType.Uri, 
-      source: CameraSource.Camera, 
-      quality: 100 
-    });
-  
-    this.photos.unshift({
-      filepath: "soon...",
-      webviewPath: capturedPhoto.webPath
-    });
-  }
-  
+  constructor(public photoService: PhotoService) { }
 }
 
-interface Photo {
-  filepath: string;
-  webviewPath: string;
-  base64?: string;
-}
+
