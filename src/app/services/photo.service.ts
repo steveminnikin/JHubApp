@@ -104,7 +104,7 @@ export class PhotoService {
       return file.data;
     } else {
       // Fetch the photo, read as a blob, then convert to base64 format
-      const response = await fetch(cameraPhoto.webPath!);
+      const response = await fetch(cameraPhoto.webPath);
       const blob = await response.blob();
 
       return await this.convertBlobToBase64(blob) as string;
