@@ -1,11 +1,8 @@
 {
-  "appId": "com.minnikin.jhub",
-  "appName": "jhubApp",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "www",
-  "cordova": {},
-  "server": {
-    "url": "http://192.168.114.1:8100"
-  }
+    "appId": "com.minnikin.jhub",
+    "appName": "jCS Receipts",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "www",
+    "cordova": {}
 }
