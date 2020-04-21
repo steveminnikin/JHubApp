@@ -1,0 +1,3 @@
+tasks:
+  - init: npm install && npm run build && npm install -g @ionic/cli
+    command: npm run start
